@@ -1,0 +1,44 @@
+
+\chapter{Introdução}
+\label{cap:Introducao_init}
+
+Este documento apresenta o Trabalho de Graduação do aluno Hebert Wandick Parreira, que é realizado sob a orientação do Professor Dr. Rodrigo Moreira Bacurau, no curso de Engenharia de Controle e Automação do nível da graduação na Faculdade de Engenharia Mecânica da UNICAMP.
+
+Um dos principais sistemas de um satélite é o sistema de determinação de atitude, o qual é parte do sistema de controle de atitude de um cubesat, que é responsável pela orientação espacial do satélite. Este sistema é de extrema importância, pois os cubesats podem possuir missões nas quais a orientação angular fixa é necessária ou uma variação angular controlada seja necessária, como para tirar fotos da superfície terrestre e fornecer acesso de rede a estação fixa em solo, como por exemplo, é o caso do Starlink.
+
+Durante este projeto, será desenvolvido sistema de rastreamento estrelar para cubesat, com aplicabilidade  na indústria aeroespacial. O sistema será baseado em visão computacional. Pretende-se utilizar webcams convencionais e utilizar como unidade de processamento embarcados de baixo custo que executam Linux, como por exemplo a Raspberry Pi 4.
+
+O foco desse projeto será no desenvolvimento dos algoritmos responsáveis por fazer a captura e análise das imagens, e determinar a posição  angular do cubesat. Para testar o sistema, será desenvolvido uma simulação. Ela consistirá de um monitor juntamente de um software  de simulação do céu estrelado a ser visualizado pelo dispositivo. 
+
+Essa simulação, será desenvolvida em linguagem Python e permitirá a rotação em todo o espaço com 360 graus de liberdade em todos os eixos, por fim será realizada uma validação final com uma webcam.
+
+\section{Motivação}
+\label{sec:Introducao_motivacao}
+Com o desenvolvimento da eletrônica, os circuitos e sistemas presentes em satélites conseguiram se tornar menores, mais leves, mais baratos, rápidos, e com maior eficiência  energética. Além disso, o desenvolvimento de uma padronização nas dimensões destes pequenos satélites possibilitou um decréscimo ainda maior de custo.
+
+Em universidades e StartUps o estudo e desenvolvimento de cubesats vem crescendo rapidamente, mesmo que os pequenos satélites apresentem limitações físicas e energéticas, o custo benefício em sua aplicabilidade é grande.
+
+Outra limitação está na capacidade do satélite de se localizar e orientar no espaço, ou seja, controlar a sua atitude, que devido às restrições já mencionadas, costumam ser extremamente limitados ou mesmo inexistentes ~\cite[]{Diaz}. Com isto, as possibilidades de aplicações destes cubesats tornam-se consideravelmente limitadas.
+
+A primeira etapa para realizarmos o controle de atitude, é identificar de forma confiável, precisa e contínua a atitude do satélite ~\cite[]{Diaz}. No espaço existem pontos de referência que podem ser utilizados para a determinação da atitude, como o Sol, Lua e a Terra, porém estas referências não são consistentes, já que o Sol pode estar encoberto, e a análise da superfície terrestre vista do espaço varia muito, devido a nuvens e outros fenômenos meteorológicos. Além disso, a análise de imagens complexas é custosa computacionalmente, o que devido às limitações de volume e energia, tornam a aplicação extremamente complicada.
+
+Outra opção é utilizar o campo magnético da terra, porém a interferência eletromagnética é algo relativamente comum, uma vez que os próprios circuitos elétricos do satélite podem gerar interferências.
+
+Uma terceira opção é a utilização de uma câmera realizando a análise das estrelas, o fato do satélite estar no espaço faz com que as estrelas estejam na maioria do tempo no campo de visão do satélite ~\cite[]{Tappe}.
+
+Realizar o controle de atitude apenas utilizando IMU (Inertial measurement unit)  é difícil, pois IMU são suscetíveis a erros de desvio de Offset, erros de Instabilidade, temperatura, são sensíveis a pancadas e vibrações ~\cite[]{Young}. Desta forma utiliza-se IMUs de alto custo, que são caros, e em sua maioria, grandes. 
+
+Com a utilização de um dos três métodos de sensorialmente apresentados anteriormente, pode-se utilizar IMUs de menor custo para auxiliar o processo, e fazer fusão sensorial, pois a deriva dos giroscópios, causará erros de orientações consideráveis em poucos segundos se não houver algum outro sistema para identificação de atitude.
+
+Devido a questões de custo e disponibilidade, utiliza-se componentes de prateleira (sensores e chips já prontos e vendidos em massa). Geralmente fazendo uso da tecnologia MEMS (micro electro mechanical systems), os quais são relativamente baratos, pequenos e possuem massa reduzida. 
+
+
+
+%\section{Determinação da Atitude}
+%\label{sec:sec01}
+%Atitude de um satélite consiste em sua orientação no espaço, um satélite possui 6 graus de liberdade, (três de rotação e três de translação)  normalmente  modelados em 12 variáveis de estado: 6 variáveis de posição e 6 de suas respectivas derivadas, já que a estabilização e o controle de orientação são normalmente desejados no controle ~\cite[]{Souza}.
+
+%Do Cálculo sabemos, que a derivada da posição a sua velocidade, e sabendo-se o valor da posição a todo instante pode-se calcular a derivada, portanto é possível facilmente obter a informação da velocidade. Desta forma, é necessário apenas a utilização de sensores de posição, o que é verdade, porém a precisão se eleva muito ao utilizarmos múltiplos sensores, e realizarmos uma fusão sensorial completa. 
+
+%Este trabalho foca no desenvolvimento do rastreador estelar que é responsável pela determinação da rotação nos 3 eixos, já pensado para a incorporação em tais conjuntos de dados futuramente.
+

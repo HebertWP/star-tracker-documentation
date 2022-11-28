@@ -1,0 +1,31 @@
+\section{Desenvolvimento de software}
+
+\subsection{Test Driven Development(TDD)}
+
+O  Desenvolvimento Orientado a Testes,  consiste em desenvolver testes separados para cada parte de um software como é o caso das funções, os testes devem garantir que o código funcione e cumpra a tarefa desejada.
+
+Para aplicá-lo, primeiro cria-se o teste ,dessa forma garante-se que o que durante o desenvolvimento do código o resultado inicialmente esperado seja obtido, dessa forma o teste falha na primeira vez que é executado, já que este está testando o recurso que ainda não existe, em seguida é desenvolvido o recurso de forma a fazer o teste passar, então repete-se este ciclo função por função. 
+
+Caso seja localizado um bug no software, primeiramente o desenvolvedor deve implementar um teste que consiga replicar o erro em específico, só então a realizar a correção, dessa forma se garante a correta implementação da solução, assim como o novo software deve manter-se passando nos testes anteriores. Algumas das vantagem de tal método são:
+\begin{itemize}
+    \item Facilidade em focar em problemas específicos de desenvolvimento
+    \item Códigos são fáceis de refatorar
+    \item Facilidade em corrigir bugs, mesmo durante o desenvolvimento
+    \item Capacidade em garantir do que está funcionando e como está funcionando
+    \item Dividir de forma mais clara cada parte do código 
+    \item Descobrir falhas de forma prematura durante o processo de desenvolvimento
+    \item Maior organização de código
+\end{itemize}
+
+Como este projeto é desenvolvido em python, é utilizado o framework pytest, para implementação dos testes, ressalta-se também que apenas os módulos do software responsáveis por realizar a matemática aqui aplicada e desenvolvida, que foram testados por tal metodologia, com a parte do software relacionada a interfaces gráficas não sendo desenvolvidas dessa forma, isto ocorre pois apesar de ser perfeitamente possível de se utilizar TDD, a criação de testes para tais componentes de software costuma ser lenta e difícil, optando-se então por apenas realizar checks visuais neste caso.
+
+\subsection{Model View Controller (MVC)}
+MVC é um arquitetura de software desenvolvida para otimizar o processo de desenvolvimento de interfaces gráficas, com foco em diminuir o tempo de manutenção do código, facilitando o debug de elementos visuais do sistema, também facilita a interação de múltiplos desenvolvedores e proporciona uma maior clareza de código exigindo um baixo nível de acoplamento entre as partes. 
+
+Para isso o MVC se divide em 3 componentes principais, o model, o controller e o view, as regras de negócio estão contidas no model assim como as informações  necessárias para execução do programa o controller realizar a interface entre o model e view, que contém as especificações de como os usuários interagem com o sistema.
+
+O view decide como apresentar as informações e como os inputs de informações são feitos, por exemplo o usuário ao clicar em um botão que tem sua aparência e posição especificados pelo view, gera um evento que é tratado pelo controlador que se preciso for irá formatar os dados gerados pela interface então transfere o dado para o model, que executa a aplicação em si, como por exemplo realizando equações matemáticas, carregando arquivos e demais lógicas de negócio.
+
+O model também é responsável por armazenar as informações sobre o estado de execução do sistema.
+
+No simulador estrelar aqui desenvolvido utiliza-se 3 views separados, para gerenciar diferentes janelas de usuário, com um único modelo que é responsável por armazenar a lógica de negócios, que consiste na execução dos códigos de simulação.
