@@ -2,34 +2,39 @@
 \label{cap:Conclusao_init}
 \addcontentsline{toc}{chapter}{Conclusão}
 
+Nesta seção são sumarizados os principais resultados obtidos com esse projeto, 
+juntamente com as principais conclusões e perspectivas futuras, e pontos a serem melhorados, 
+o que envolve melhorias e adições ao Star Tracker em si, 
+mas também envolvem a integração do sistema aqui desenvolvido com outros outros componentes do sistema de orientação espacial do cubesat.
 
-Ao longo do desenvolvimento deste trabalho, vários pontos de melhorias fora notados, 
-assim como pontos de desenvolvimento futuros, o que envolve melhorias e adições ao Star Tracker em si, 
-mas também envolvem a integração do sistema aqui desenvolvido com outros outros componentes do sistema de orientação espacial do cubesat,
-é listado uma series de pontos a serem trabalhados.
-
-Além disto alguns erros de arquitetura do sistema cometidos pelo autor, não permitiram a analise com grandes conjuntos de dados, 
+Além disso, alguns erros de arquitetura do sistema cometidos pelo autor, não permitiram a analise com grandes conjuntos de dados, 
 com diferentes frames, porém o sistema se mostra promissor.
 
-\section*{Correções e testes adicionais}
+\section*{Trabalhos futuros}
 \begin{itemize}
 	\item \textbf{Melhorias na implementação do algoritmo de correção de distorções}: Apesar da correção da distorção de pixel parecer aceitável, 
-	pelos resultados apresentados na seção anterior, a incidência de erros na resposta final de detecção de estrelas, indica que esta etapas pode conter erros, 
-	uma das possíveis soluções, é a utilização da biblioteca open CV para realizar esta etapa, pois esta já possuir algorítimos para resolução de distorções, 
-	porém houve uma escolha de não ha utilizar pois está implementa uma serie de recursos matemáticos ainda não completamente entendidos pelo autor. 
+	pelos resultados apresentados na seção anterior, a incidência de erros na resposta final de detecção de estrelas, indica que esta etapas pode conter erros. 
+	Uma das possíveis soluções, é a utilização da biblioteca open CV para realizar esta etapa, pois ela já possui algorítimos para resolução de distorções. 
+	Optou-se inicialmente não utilizada por conter uma serie de recursos matemáticos ainda não completamente entendidos pelo autor. 
 	\item \textbf{Utilização do triângulos esféricos}: Neste trabalho utiliza-se triângulos planares, porém a utilização de triângulos esféricos aumenta a precisão do sistema, 
-	como é explicado por Cole ~\cite{Cole_2}
+	como é explicado por Cole ~\cite{Cole_2}.
 	\item \textbf{Refatoração da estrutura de testes}: A atual estrutura de testes é pensada para ser de fácil compressão, 
-	e permitir o teste de diferentes senários pelo usuário, porém o deste em milhares de entradas para se fazer analises estatísticas melhores não é possível de forma fácil, 
-	isto não se deve a limitações de algorítimo, pois o algoritmo ao al do tipo, mas sim um erro estrutural de organização de testes.
-	Portanto a refatoração destes códigos se faz necessária para um melhor desenvolvimento de etapas futuras. 
+	e permitir o teste de diferentes senários pelo usuário. 
+	Porém o ideal séria uma estrutura de testes que permitisse a realização de testes em massa, 
+	para que seja feita uma analise estatista como é realizada por ~\cite{Cole_2}, 
+	o que não é possível com a estrutura atual.  
+	Isto não se deve a limitações de algorítimo, 
+	pois o algoritmo é capaz de realizar a detecção em tempo pequeno, 
+	assim como pode ser executado em múltiplos processos em paralelo, 
+	com a limitação sendo um erro estrutural de organização de testes. 
+	Portanto, a refatoração destes códigos se faz necessária para um melhor desenvolvimento de etapas futuras. 
 \end{itemize}
 
 \section*{Perspectivas Futuras}
 
 \begin{itemize}
-	\item \textbf{Desenvolvimento de um simulador para teste de hardware}: Esta etapa já foi descrita na seção ~\ref{cap:simulador}
+	\item \textbf{Desenvolvimento de um simulador para teste de hardware}: Esta etapa já foi descrita na Seção ~\ref{cap:simulador}.
 	\item \textbf{Construção física de um sistema de câmera}: A construção de um sistema físico, para deste mais fieis a realidade também se faz necessária, 
-	nota-se que ao longo deste trabalho todos os códigos foram testado em raspberry pi 4, o que facilita muito no desenvolvimento ode futuras etapas. 
-	\item \textbf{Integração com filtro dde Kalman}: Com o protótipo físico em mão pode se iniciar a integração com outros sistema de metição para se refinar a precisão.
+	nota-se que ao longo deste trabalho todos os códigos foram testado em Raspberry pi 4, o que facilita muito no desenvolvimento de etapas futuras. 
+	\item \textbf{Integração com filtro de Kalman}: Com o protótipo físico em mãos pode-se iniciar a integração com outros sistema de medição para se refinar a precisão.
 \end{itemize}
