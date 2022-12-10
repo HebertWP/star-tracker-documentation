@@ -6,12 +6,13 @@ Erros nesta atapa da analise pode fazer o reconhecimento da posição angular do
 
 \subsection{Distorções em imagens}
 
-As correções de distorções nas imagens captadas devem ser realizadas, 
-com os erros não podendo ser ignorados, pois a distorção de imagem pode causar erros na localização das estrelas. 
+As correções de distorções nas imagens captadas devem ser realizadas. 
 Estas distorções se dividem em dois componentes, uma sendo a radial e outra tangencial, com a componente radial sendo predominante.
 Além disto, existem distorções de construção das lentes, distorções de desalinhamento da lente em relação ao centro da Matriz CCD da câmera.
 
 \subsubsection{Distorção radial}
+\label{subsubsec:distorcao_radial}
+
 Distorção radial é vista quando utiza-se câmera com grandes ângulos e com pequena distância focal~\cite[]{Mallon}.
 Os efeitos da distorção radial são representados na Figura ~\ref{fig:Distorcao_radial}.
 
@@ -35,6 +36,18 @@ Dessa forma a distorção radial é corrigida através das equações ~\ref{eq:D
 	\label{eq:Distorcao_radial_y}
 \end{equation}
 
+As equações \ref{eq:Distorcao_radial_x} e \ref{eq:Distorcao_radial_y} são aplicadas para cada pixel da imagem, 
+sendo que o valor de $r$ é a distancia em pixels do centro da imagem até o pixel em questão.
+O formato destas equações é polinomial, pois quanto maior o valor de $r$ maior a distorção radial.
+Para se medir o erro é utilizado uma imagem de referência, com medidas conhecidas, como é visto na Figura ~\ref{fig:Distorcao_radial}.
+Em que se utiliza um tabuleiro de xadrez retor para se medir a distorção radial.
+Tal efeito polinomial do erro pode ser observado na seção \ref{sec:Resultados_correcao_camera}.
+
+Com o valor de $k_1$, $k_2$ e $k_3$ sendo os coeficientes da correção radial, 
+Y original e X original são os valores de pixel da imagem medidos originalmente na imagem,
+Y corrigido e X corrigido são os valores de pixel da imagem medidos após a correção radial, 
+sendo os valores que a câmera deveria obter se não houvesse distorção radial. 
+
 \subsubsection{Distorção tangencial}
 Distorções tangenciais ocorrem quando a câmera e o plano da imagem não estão em paralelo ~\cite[]{ozcakir_2020}.
 Os efeitos da distorção tangencial são representados na Figura ~\ref{fig:Distorcao_tangencial}.
@@ -57,5 +70,9 @@ Esta distorção é corrigida através das equações ~\ref{eq:Distorcao_tangenc
 	Y_{corrigido} = Y_{original} (1 + p_1 r^2 + p_2 r^4 + p_3 r^6).
 	\label{eq:Distorcao_tangencial_y}
 \end{equation}
+
+Nas equações \ref{eq:Distorcao_tangencial_x} e \ref{eq:Distorcao_tangencial_y} $r$ é a distância em pixels do centro da imagem até o pixel em questão, 
+$p_1$, $p_2$ e $p_3$ são os coeficientes da correção tangencial.
+Y
 
 Resalta-se que a ferramenta de simulação estrelar desenvolvida para este trabalho não possui distorcão tangencial, pois a câmera e o plano da imagem estão paralelos.

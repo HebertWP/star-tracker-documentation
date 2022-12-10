@@ -1,17 +1,17 @@
 \section{Simulador}
 \label{cap:simulador}
 
-O objetivo da simulação é poder realizar teste em ambiente controlado, 
+O objetivo da simulação é permitir testes em ambiente controlado, 
 de forma a se averiguar a precisão, acurácia e velocidade de processamento da posição por parte do Star Tracker. 
 Para isto, a simulação implementa modelos matemáticos que representem o sistema real o mais fielmente possível. 
 
-O programa esta desenvolvido a permitir ao leitor testar diferentes cenários de forma rápida e intuitiva,
-podendo assim carregar diferentes arquivos como figuração de câmera, diferentes arquivos de dados de estrelas,
-além disto o simulador permite a visualização tanto em 3D como em 2D, para que o usuário possa ter uma visão mais clara do que está acontecendo.
-Com a visualização em 2D feita para se comparar os resultados com os resultados obtidos em outros trabalhos.
+O programa foi desenvolvido de forma a permitir ao leitor testar diferentes cenários de forma rápida e intuitiva,
+podendo assim carregar diferentes arquivos como figuração de câmera, diferentes arquivos de dados de estrelas. 
+Além disto, o simulador permite a visualização tanto em 3D como em 2D, para que o usuário possa ter uma visão mais clara do que está acontecendo.
+A visualização em 2D permite se comparar os resultados com os resultados obtidos em outros trabalhos.
 
-Atualmente o simulador apenas salva o frame desejado em um arquivo de imagem, porém, o sistema foi construído a permitir a visualização em um segundo monitor do simulação em tempo real.
-Isto se deve a possíveis fases de simulações com hardware real, como pode ser visto na Figura ~\ref{fig:Simulador_top} e na Figura ~\ref{fig:Simulador_tipo_meu}.
+Atualmente, o simulador apenas salva o frame desejado em um arquivo de imagem, porém, o sistema foi construído a permitir a visualização em um segundo monitor do simulação em tempo real.
+Isto permitirá possíveis fases de simulações com hardware real, como pode ser visto na Figura ~\ref{fig:Simulador_top} e na Figura ~\ref{fig:Simulador_tipo_meu}.
 
 \begin{figure}[H]
     \centering
@@ -29,11 +29,17 @@ Isto se deve a possíveis fases de simulações com hardware real, como pode ser
 
 \subsection{Recursos e características}
 
-\textbf{GUI (Graphical User Interface):} A simulação é inteiramente controlada através de uma GUI criada para facilitar o controle e a execução dos testes, também é utilizada para facilitar a visualização e a correção de possíveis erros e bugs no software e no desenvolvimento do trabalho em geral. A implementação dos módulos de funcionamento do software segue conceitos dos TDD (Test driven  development), juntamente da arquitetura de software MVC (model view controller), para organizar o funcionamento da interface em si.
+\textbf{GUI (\textit{Graphical User Interface}):} A simulação é controlada através de uma GUI criada para facilitar o controle e a execução dos testes, também é utilizada para facilitar a visualização e a correção de possíveis erros e \textit{bugs} no software e no desenvolvimento do trabalho em geral. 
+A implementação dos módulos de funcionamento do software segue conceitos dos TDD (\textit{Test driven  development}), 
+juntamente da arquitetura de software MVC (\textit{model view controller}), 
+para organizar o funcionamento da interface em si ~\cite[]{Martin_Fitzpatrick}.
 
-\textbf{Gerador de campo de visão:} Esta é a função principal do software de simulação, que é gerar uma janela com o campo de visão que teoricamente seria visto pela câmera, a imagem gerada é monocromática com as estrelas projetadas sobre a superfície plana do monitor, neste trabalho as estrelas simuladas são apenas círculos brancos em um fundo preto, porém são estrelas retiradas de uma base de dados reais.
+\textbf{Gerador de campo de visão:} Esta é a função principal do software de simulação, 
+que é gerar uma janela com o campo de visão que teoricamente seria visto pela câmera, 
+a imagem gerada é monocromática com as estrelas projetadas sobre a superfície plana do monitor. 
+Neste trabalho as estrelas simuladas são apenas círculos brancos em um fundo preto, porém são estrelas retiradas de uma base de dados reais.
 
-\textbf{Load de arquivos:} Para facilitar a mudança de parâmetros durante os testes e simulações , o software carrega todas as informações inerentes a configuração e execução dos testes, através de caixas de diálogo que pedem a seleção dos arquivos de simulação. Para uma maior modularidade, cada informação está dividida em arquivos diferentes, com arquivos separados para configuração de câmera, base de dados de estrelas e sequência de movimentos a ser realizada.
+\textbf{Carregamento de arquivos:} Para facilitar a mudança de parâmetros durante os testes e simulações , o software carrega todas as informações inerentes a configuração e execução dos testes, através de caixas de diálogo que pedem a seleção dos arquivos de simulação. Para uma maior modularidade, cada informação está dividida em arquivos diferentes, com arquivos separados para configuração de câmera, base de dados de estrelas e sequência de movimentos a ser realizada.
 
 \textbf{Elementos auxiliares de visualização:} Além das funcionalidades básicas, o software implementa  recursos de configuração  de aspectos visuais. Apesar de não serem estritamente necessários são de extrema importância  para análises menos rigorosas das informações, como por exemplo, o plot 3D, a projeção cartográfica em 2D. Com opções de visualização da posição das câmeras e demais auxílios.
 
@@ -45,9 +51,9 @@ Isto se deve a possíveis fases de simulações com hardware real, como pode ser
 
 A projeção descreve matemática como representar um ponto com 3 graus de liberdade, no espaço bidimensional do monitor e do frame da câmera. Essa transformação pode ser realizada através de matrizes, que levam em consideração elementos como o ângulo focal da lente, a resolução e proporção da imagem.
 
-\subsection{Square Frustum}
+\subsection{\textit{Square Frustum}}
 
-Frustum retangular é um espaço que contém a linha de visão de  um visualizador como se este possuísse um ângulo de visão retangular, que é caso de câmeras com CCD retangulares, para melhor entender este conceito recomenda-se a observação da Figura \ref{fig:frustum}.
+\textit{Frustum} retangular é um espaço que contém a linha de visão de  um visualizador como se este possuísse um ângulo de visão retangular, que é caso de câmeras com CCD retangulares, para melhor entender este conceito recomenda-se a observação da Figura \ref{fig:frustum}.
 
 \begin{figure}[H]
     \centering
@@ -56,9 +62,13 @@ Frustum retangular é um espaço que contém a linha de visão de  um visualizad
     \label{fig:frustum}
 \end{figure}
 
-A existência de um plano ao fundo na cena (far clip), se deve ao equacionamento que leva os pontos presentes na cena 3D para o frame 2D da câmara, além de reduzir o custo de processamento requerido pelo programa para gerar a cena sendo parte importante do equacionamento do frame da câmera.
+A existência de um plano ao fundo na cena (\textit{far clip}), 
+se deve ao equacionamento que leva os pontos presentes na cena 3D para o frame 2D da câmara, 
+com adição do \textit{far clip} o custo de processamento requerido pelo programa diminui, 
+desta forma sendo necessário equacionamento do frame da câmera, apesar deste conceito não existir em cameras reais.
 
-Considerando que o ângulo de visão da câmera esteja apontada para o positivo do eixo x como é mostrado na figura \ref{fig:posicao_inicial_camera}.
+Neste trabalho, convencionou-se que o ângulo de visão da câmera esteja apontado para o positivo do eixo x, 
+como é mostrado na Figura \ref{fig:posicao_inicial_camera}.
 
 \begin{figure}[H]
     \centering
@@ -67,7 +77,9 @@ Considerando que o ângulo de visão da câmera esteja apontada para o positivo 
     \label{fig:posicao_inicial_camera}
 \end{figure}
 
-As setas coloridas presentes na imagem são as coordenadas do frame da câmera, que seguem um esquema de cores usual para esse tipo de aplicação, na figura 17 é demonstrado as relações X,Y e Z com as cores:
+As setas coloridas presentes na imagem representam as coordenadas do frame da câmera, 
+que seguem um esquema de cores usual para esse tipo de aplicação, 
+na Figura \ref{fig:coordenadas} é demonstrado as relações X,Y e Z com as cores:
 
 \begin{figure}[H]
     \centering
@@ -77,7 +89,8 @@ As setas coloridas presentes na imagem são as coordenadas do frame da câmera, 
 \end{figure}
 
 
-Com isso se desenvolveu a seguinte equação matricial da câmera, seguindo os passos mostrados por Brendan Galea em seu video ~\cite[]{Galea}:
+Com isso, se desenvolveu a seguinte equação matricial da câmera, 
+seguindo os passos mostrados por Brendan Galea em seu video ~\cite[]{Galea}:
 
 \begin{equation}
     \begin{bmatrix}
@@ -98,54 +111,58 @@ Com isso se desenvolveu a seguinte equação matricial da câmera, seguindo os p
         y \\
         z \\
         1
-    \end{bmatrix}
+    \end{bmatrix}.
 \end{equation}
 
-Em que, \textbf{f} é a distância do far plane ao ponto (0,0,0), que neste caso é sempre unitário já que a estrelas estão presentes em um círculo unitário, $\Theta$ é o ângulo de abertura  da câmera, \textbf{w} é a quantidade de pixels na horizontal camera, \textbf{h} é quatidade e pixel na vertical da câmera por fim \textbf{n} é a distância do near plane, que neste caso é o coseno de $\frac{\Theta}{2}$.
+Em que, \textbf{f} é a distância do \textit{far plane} ao ponto (0,0,0), 
+que neste caso é sempre unitário já que a estrelas estão presentes em um círculo unitário, $\Theta$ é o ângulo de abertura  da câmera, \textbf{w} é a quantidade de pixels na horizontal camera, \textbf{h} é quatidade e pixel na vertical da câmera por fim \textbf{n} é a distância do near plane, que neste caso é o coseno de $\frac{\Theta}{2}$.
 
 Nota-se que a matriz de transformação da câmera é uma matriz 4X4 isso ocorre pois as equações de transformação são realizadas através de coordenadas homogêneas e não coordenadas cartesianas tradicionais.
 
-Além da matriz, existe uma equação de clipping que determina se uma estrela deve ou não aparecer no frame, devido a simplicidade da simulação aqui implementada essa equação se tornou apenas um cheque se a estrela se encontrava na metade da esfera celeste em que x é positivo.
+Além da matriz, existe uma equação de \textit{clipping} que determina se uma estrela deve ou não aparecer no frame. 
+Devido a simplicidade da simulação implementada nesse trabalho, 
+essa equação se tornou apenas uma verificação se a estrela se encontrava na metade da esfera celeste em que x é positivo.
 
 O resultado dessa simulação pode ser visto na Figura \ref{fig:resultado_simulacao}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/resultado_simulacao.png}
-    \caption{Camera frame at position,declination 0º, arcensão 0º, roll 0º}
+    \caption{Camera frame at position,declination 0º, ascensão 0º, roll 0º. Fonte: Autoria própria}
     \label{fig:resultado_simulacao}
 \end{figure}
 
-\subsection{Configurações de camera}
+\subsection{Configurações de câmera}
 
 No simulador, o leitor pode carregar um arquivo de câmera, que é um arquivo json, com as seguintes informações:
 
 \begin{itemize}
-    \item \textbf{ang}: É a abertura da lente, nas figuras ~\ref{fig:Camera_ang_30} e ~\ref{fig:Camera_ang_20} ve-se o impacto dessa variável\tabularnewline
-    \item \textbf{w}: É a quantidade de pixels que a câmera possui de altura\tabularnewline
-    \item \textbf{h}: É a quantidade de pixels que a câmera possui de largura\tabularnewline
+    \item \textbf{ang}: Abertura da lente, nas figuras ~\ref{fig:Camera_ang_30} e ~\ref{fig:Camera_ang_20} ve-se o impacto dessa variável;\tabularnewline
+    \item \textbf{w}: Quantidade de pixels que a câmera possui de altura;\tabularnewline
+    \item \textbf{h}: Quantidade de pixels que a câmera possui de largura;\tabularnewline
 \end{itemize}
 
-Neste trabalho a altura e a largura em pixel são apenas utilizadas para calcular a proporção do frame gerado, com o angulo de abertura da lente, responsável por controlar o tamanho geral do FOV da câmera.
+Neste trabalho, a altura e a largura em pixel são apenas utilizadas para calcular a proporção do frame gerado, com o angulo de abertura da lente, responsável por controlar o tamanho geral do FOV da câmera.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\columnwidth]{images/Camera_ang_30.png}
     \caption{Camera ang 30}
-    \label{fig:Camera_ang_30}
+    \label{fig:Camera_ang_30. Fonte: Autoria própria}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\columnwidth]{images/Camera_ang_20.png}
     \caption{Camera ang 20}
-    \label{fig:Camera_ang_20}
+    \label{fig:Camera_ang_20. Fonte: Autoria própria}
 \end{figure}
 
 \section{Arquivo de estrelas}
 
-A estrutura dessse arquivo ja foi explicada na seção \ref{sec:catalogo_de_estrelas}, 
-nas figuras ~\ref{fig:my_3D} e ~\ref{fig:my_2D} pode-se o resultado de carregar o catalogo NASA I/239, filtrado para estrelas com magnitude menor que 5.
+A estrutura desse arquivo ja foi explicada na seção \ref{sec:catalogo_de_estrelas}. 
+Nas figuras ~\ref{fig:my_3D} e ~\ref{fig:my_2D} são apresentados os resultados do carregamento do catalogo NASA I/239, 
+filtrado para estrelas com magnitude menor que 5.
 
 \begin{figure}[H]
     \centering
@@ -161,5 +178,5 @@ nas figuras ~\ref{fig:my_3D} e ~\ref{fig:my_2D} pode-se o resultado de carregar 
     \label{fig:my_2D}
 \end{figure}
 
-Veja que a semelhança com os resultados de ~\cite[]{Diaz}, 
+Os resultados foram muito semelhantes aos obtidos por ~\cite[]{Diaz}, 
 fato que corrobora a correta leitura dos arquivos de dados.

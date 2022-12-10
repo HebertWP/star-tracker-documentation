@@ -7,7 +7,11 @@ Em universidades e  \textit{StartUps} o estudo e desenvolvimento de cubesats vê
 Outra limitação está na capacidade do satélite de se localizar e orientar no espaço, ou seja, controlar a sua atitude, que devido às restrições já mencionadas, costumam ser extremamente limitados ou mesmo inexistentes ~\cite[]{Diaz}. Com isto, as possibilidades de aplicações destes cubesats tornam-se consideravelmente limitadas.
 
 A primeira etapa para realização do controle de atitude, é identificar de forma confiável, precisa e contínua, 
-a orientação do satélite ~\cite[]{Diaz}. No espaço existem pontos de referência que podem ser utilizados para a determinação da atitude, como o Sol, Lua e a Terra, porém estas referências não são consistentes, já que o Sol pode estar encoberto, e a análise da superfície terrestre vista do espaço varia muito, devido a nuvens e outros fenômenos meteorológicos. Além disso, a análise de imagens complexas é custosa computacionalmente, o que devido às limitações de volume e energia, tornam a aplicação extremamente complicada.
+a orientação do satélite ~\cite[]{Diaz}. No espaço existem pontos de referência que podem ser utilizados para a determinação da atitude, 
+como o Sol, Lua e a Terra, porém estas referências não são consistentes, já que o Sol pode estar encoberto, 
+e a análise da superfície terrestre vista do espaço varia muito, devido a nuvens e outros fenômenos meteorológicos. 
+Além disso, a análise de imagens complexas é custosa computacionalmente, 
+devido às limitações de volume e energia, tornam a aplicação extremamente complicada.
 
 Outra opção é utilizar o campo magnético da Terra, porém, a interferência eletromagnética é algo relativamente comum, 
 uma vez que os próprios circuitos elétricos do satélite podem gerar interferências, 
@@ -16,7 +20,7 @@ o que inviabiliza a utilização dessa grandeza física para monitoramento de at
 Uma terceira opção é a utilização de uma câmera realizando a análise das estrelas, o fato do satélite estar no espaço faz com que as estrelas estejam na maioria do tempo no campo de visão do satélite ~\cite[]{Tappe}.
 
 Realizar o controle de atitude apenas utilizando IMU (\textit{Inertial Measurement Unit})  é difícil, pois IMU são suscetíveis a erros de desvio de Offset, erros de Instabilidade, temperatura, são sensíveis a pancadas e vibrações ~\cite[]{Young}. 
-Desta forma, utiliza-se IMUs de alto custo, m sua maioria baseada em transdutores ópticos, como os IFOGs (interferometric fiber óptica gyroscopes) e os RLGs (ring laser gyros), 
+Desta forma, utiliza-se IMUs de alto custo, m sua maioria baseada em transdutores ópticos, como os IFOGs (\textit{interferometric fiber optic gyroscopes}) e os RLGs (\textit{ring laser gyros}), 
 que são caros, e em sua maioria, grandes. 
 
 Apesar de IMUs de baixo custo não serem adequadas para identificação de atitute através da integração das velocidades angulares dos girsocópios, 
