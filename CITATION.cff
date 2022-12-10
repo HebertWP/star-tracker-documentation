@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Parreira"
+  given-names: "Hebert"
+title: "Star Tracker Cocumentation"
+version: 1.0.0
+date-released: 2022-12-10
+url: "https://github.com/HebertWP/star-tracker-documentation"
